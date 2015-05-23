@@ -1,0 +1,32 @@
+{
+  "name": "simple-snap-widget",
+  "version": "0.1.0",
+  "homepage": "https://github.com/TingPan/simple-snap-widget",
+  "authors": [
+    "tingpan <tingpan666@gmail.com>"
+  ],
+  "description": "The best project ever.",
+  "main": "lib/snap.js",
+  "keywords": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "spec",
+    "node_modules",
+    "vendor",
+    "Gemfile",
+    "Gemfile.lock",
+    "Gruntfile.coffee",
+    "package.json",
+    "README.md",
+    "demo.html",
+    "circle.yml",
+    "umd.hbs"
+  ],
+  "dependencies": {
+    "jquery": "2.x",
+    "simple-module": "2.x",
+    "simple-dragdrop" : "2.x"
+  }
+}
+
