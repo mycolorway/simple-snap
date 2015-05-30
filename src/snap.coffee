@@ -1,9 +1,8 @@
-
 class Snap extends SimpleModule
   @pluginName: 'Snap'
 
   opts:
-    align:true,
+    align: true,
     distance: 1,
     axis: null,
     alignOffset: 10,
@@ -15,7 +14,7 @@ class Snap extends SimpleModule
     @dragdrop.opts.helper = null
     @horizental_line = $('<div class="horizontal_line"></div>').appendTo("body")
     @vertical_line = $('<div class="vertical_line"></div>').appendTo("body")
-    @dragdrop.on 'drag', (e,obj) =>
+    @dragdrop.on 'drag', (e, obj) =>
       clearTimeout(@align_event_x)
       @horizental_line.hide()
       @vertical_line.hide()
@@ -25,12 +24,13 @@ class Snap extends SimpleModule
       adjacent_objs = @_adjacent $dragging, other_dragables
       align_x = @_align $dragging, adjacent_objs.x, @_edgesX, @_lineX
       align_y = @_align $dragging, adjacent_objs.y, @_edgesY, @_lineY
+
       if align_x
         $dragging.css 'left', $dragging.offset().left + align_x.move
         @horizental_line.css({
           'left': align_x.align_edge,
-          'top' : align_x.line.start
-          'height' : align_x.line.length
+          'top': align_x.line.start
+          'height': align_x.line.length
         })
         @horizental_line.show()
 
@@ -38,8 +38,8 @@ class Snap extends SimpleModule
         $dragging.css 'top', $dragging.offset().top + align_y.move
         @vertical_line.css({
           'top': align_y.align_edge,
-          'left' : align_y.line.start
-          'width' : align_y.line.length
+          'left': align_y.line.start
+          'width': align_y.line.length
         })
         @vertical_line.show()
 
@@ -57,7 +57,7 @@ class Snap extends SimpleModule
       $ele = $(ele)
       ele_edges = edges.call @, $ele
       $.each ele_edges, (index, ele_edge) =>
-        $.each target_edges , (index, target_edge) =>
+        $.each target_edges, (index, target_edge) =>
           distance = Math.abs(target_edge - ele_edge)
           if distance < min_distance
             min_distance = distance
@@ -78,9 +78,9 @@ class Snap extends SimpleModule
     $.each references, (index, ele) =>
       $ele = $(ele)
       distance = @_distance target, $ele
-      if distance.x < @opts.alignOffset/2 && distance.y < @opts.rage
+      if distance.x < @opts.alignOffset / 2 && distance.y < @opts.rage
         adjacent_x.push $ele
-      if distance.y < @opts.alignOffset/2  && distance.x < @opts.rage
+      if distance.y < @opts.alignOffset / 2 && distance.x < @opts.rage
         adjacent_y.push $ele
     adjacent =
       x: adjacent_x
@@ -93,8 +93,8 @@ class Snap extends SimpleModule
     referenceX = (reference.offset().left * 2 + reference.width()) / 2
     referenceY = (reference.offset().top * 2 + reference.height()) / 2
     distance =
-      y : Math.abs(referenceY - targetY) - (target.height() + reference.height()) / 2
-      x : Math.abs(referenceX - targetX) - (target.width() + reference.width()) / 2
+      y: Math.abs(referenceY - targetY) - (target.height() + reference.height()) / 2
+      x: Math.abs(referenceX - targetX) - (target.width() + reference.width()) / 2
     distance
 
   _edgesX: (ele) ->
@@ -102,9 +102,9 @@ class Snap extends SimpleModule
     ele_right = ele_left + ele.width()
     ele_mid = (ele_left + ele_right) / 2
     edges =
-      edges1 : ele_left
-      edges2 : ele_mid
-      edges3 : ele_right
+      edges1: ele_left
+      edges2: ele_mid
+      edges3: ele_right
     edges
 
   _edgesY: (ele) ->
@@ -112,12 +112,12 @@ class Snap extends SimpleModule
     ele_bot = ele_top + ele.height()
     ele_mid = (ele_top + ele_bot) / 2
     edges =
-      edges1 : ele_top
-      edges2 : ele_mid
-      edges3 : ele_bot
+      edges1: ele_top
+      edges2: ele_mid
+      edges3: ele_bot
     edges
 
-  _lineX: (e1,e2) ->
+  _lineX: (e1, e2) ->
     top_e1 = e1.offset().top
     top_e2 = e2.offset().top
     bot_e1 = top_e1 + e1.height()
@@ -129,7 +129,7 @@ class Snap extends SimpleModule
       start: top - 10
       length: height + 20
 
-  _lineY: (e1,e2) ->
+  _lineY: (e1, e2) ->
     left_e1 = e1.offset().left
     left_e2 = e2.offset().left
     right_e1 = left_e1 + e1.width()
