@@ -36,7 +36,7 @@ module.exports = (grunt) ->
         objectToExport: 'Snap'
         globalAlias: 'Snap'
         deps:
-          'default': ['$', 'SimpleModule', 'SimpleDragdrop']
+          'default': ['$', 'SimpleModule', 'simpleDragdrop']
           amd: ['jquery', 'simple-module', 'simple-dragdrop']
           cjs: ['jquery', 'simple-module', 'simple-dragdrop']
           global:
