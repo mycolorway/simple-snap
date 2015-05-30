@@ -5,7 +5,7 @@ class Snap extends SimpleModule
     align: true,
     distance: 1,
     axis: null,
-    alignOffset: 10,
+    alignOffset: 5,
     rage: 100
 
   _init: ->
@@ -49,7 +49,7 @@ class Snap extends SimpleModule
 
   _align: (target, references, edges, line) ->
     target_edges = edges.call @, target
-    min_distance = @opts.alignOffset / 2
+    min_distance = @opts.alignOffset
     align_edge = null
     align_obj = null
     move = null
@@ -59,7 +59,7 @@ class Snap extends SimpleModule
       $.each ele_edges, (index, ele_edge) =>
         $.each target_edges, (index, target_edge) =>
           distance = Math.abs(target_edge - ele_edge)
-          if distance < min_distance
+          if !((distance > min_distance) || (distance == min_distance && align_obj && align_obj.data('distance') < ele.data('distance')))
             min_distance = distance
             align_edge = ele_edge
             move = ele_edge - target_edge
@@ -71,16 +71,17 @@ class Snap extends SimpleModule
         line: line.call @, target, align_obj
     align_info
 
-
   _adjacent: (target, references) ->
     adjacent_x = []
     adjacent_y = []
     $.each references, (index, ele) =>
       $ele = $(ele)
       distance = @_distance target, $ele
-      if distance.x < @opts.alignOffset / 2 && distance.y < @opts.rage
+      if distance.x < @opts.alignOffset && distance.y < @opts.rage
+        $ele.data('distance', distance.y)
         adjacent_x.push $ele
-      if distance.y < @opts.alignOffset / 2 && distance.x < @opts.rage
+      if distance.y < @opts.alignOffset && distance.x < @opts.rage
+        $ele.data('distance', distance.x)
         adjacent_y.push $ele
     adjacent =
       x: adjacent_x
