@@ -31,7 +31,6 @@ class Snap extends SimpleModule
           'left': align_x.align_edge,
           'top' : align_x.line.start
           'height' : align_x.line.length
-
         })
         @horizental_line.show()
 
@@ -41,7 +40,6 @@ class Snap extends SimpleModule
           'top': align_y.align_edge,
           'left' : align_y.line.start
           'width' : align_y.line.length
-
         })
         @vertical_line.show()
 
