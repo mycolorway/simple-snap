@@ -19,6 +19,9 @@ module.exports = (grunt) ->
           bare: true
         files:
           'lib/snap.js': 'src/snap.coffee'
+      spec:
+        files:
+          'spec/snap-spec.js': 'spec/snap-spec.coffee'
 
     watch:
       src:
@@ -27,6 +30,12 @@ module.exports = (grunt) ->
       styles:
         files: ['styles/*.scss']
         tasks: ['sass']
+      spec:
+        files: ['spec/**/*.coffee']
+        tasks: ['coffee:spec']
+      jasmine:
+        files: ['lib/**/*.js', 'specs/**/*.js']
+        tasks: 'jasmine:test:build'
 
     umd:
       all:
@@ -43,9 +52,23 @@ module.exports = (grunt) ->
             items: ['jQuery', 'SimpleModule', 'simple.dragdrop']
             prefix: ''
 
+    jasmine:
+      test:
+        src: ['lib/**/*.js']
+        options:
+          outfile: 'spec/index.html'
+          specs: 'spec/snap-spec.js'
+          vendor: [
+            'vendor/bower/jquery/dist/jquery.min.js'
+            'vendor/bower/simple-module/lib/module.js'
+            'vendor/bower/simple-dragdrop/lib/dragdrop.js'
+          ]
+
   grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-contrib-jasmine'
   grunt.loadNpmTasks 'grunt-umd'
 
-  grunt.registerTask 'default', ['sass', 'coffee', 'umd', 'watch']
+  grunt.registerTask 'default', ['sass', 'coffee', 'umd', 'jasmine:test:build', 'watch']
+  grunt.registerTask 'test', ['coffee', 'umd', 'jasmine:test']
