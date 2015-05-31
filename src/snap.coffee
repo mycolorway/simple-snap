@@ -82,10 +82,10 @@ class Snap extends SimpleModule
     $.each references, (index, ele) =>
       $ele = $(ele)
       distance = @_distance target, $ele
-      if distance.x < @opts.alignOffset && distance.y < @opts.range
+      if distance.x <= @opts.alignOffset && distance.y < @opts.range
         $ele.data('distance', distance.y)
         adjacent_x.push $ele
-      if distance.y < @opts.alignOffset && distance.x < @opts.range
+      if distance.y <= @opts.alignOffset && distance.x < @opts.range
         $ele.data('distance', distance.x)
         adjacent_y.push $ele
     adjacent =

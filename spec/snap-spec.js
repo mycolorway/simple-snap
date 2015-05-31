@@ -9,12 +9,12 @@
     $dragging.css({
       height: 30,
       width: 30,
-      border: '1px solid black'
+      background: 'red'
     });
     $target.css({
       height: 100,
       width: 100,
-      border: '1px solid black'
+      background: 'blue'
     });
     dragOffset = $dragging.offset();
     targetOffset = $target.offset();
@@ -122,19 +122,19 @@
       expect($(document).find('.horizontal_line').css('display')).toBe('none');
       for (i = j = ref = -ALIGN_OFFSET, ref1 = ALIGN_OFFSET; ref <= ref1 ? j <= ref1 : j >= ref1; i = ref <= ref1 ? ++j : --j) {
         mousemove(i, 0);
-        expect($(document).find('.horizontal_line').css('left')).toBe('38px');
+        expect($(document).find('.horizontal_line').css('display')).toBe('block');
       }
       mousemove(ALIGN_OFFSET + 1, 0);
       expect($(document).find('.horizontal_line').css('display')).toBe('none');
       for (i = k = ref2 = TARGET_WIDTH / 2 - ALIGN_OFFSET, ref3 = TARGET_WIDTH / 2 + ALIGN_OFFSET; ref2 <= ref3 ? k <= ref3 : k >= ref3; i = ref2 <= ref3 ? ++k : --k) {
         mousemove(i, 0);
-        expect($(document).find('.horizontal_line').css('left')).toBe('88px');
+        expect($(document).find('.horizontal_line').css('display')).toBe('block');
       }
       mousemove(TARGET_WIDTH / 2 + ALIGN_OFFSET + 1, 0);
       expect($(document).find('.horizontal_line').css('display')).toBe('none');
       for (i = l = ref4 = TARGET_WIDTH - ALIGN_OFFSET, ref5 = TARGET_WIDTH + ALIGN_OFFSET; ref4 <= ref5 ? l <= ref5 : l >= ref5; i = ref4 <= ref5 ? ++l : --l) {
         mousemove(i, 0);
-        expect($(document).find('.horizontal_line').css('left')).toBe('138px');
+        expect($(document).find('.horizontal_line').css('display')).toBe('block');
       }
       mousemove(TARGET_WIDTH + ALIGN_OFFSET + 1, 0);
       return expect($(document).find('.horizontal_line').css('display')).toBe('none');
@@ -143,6 +143,7 @@
       var ALIGN_OFFSET, TARGET_HEIGHT, i, j, k, l, ref, ref1, ref2, ref3, ref4, ref5;
       ALIGN_OFFSET = 5;
       TARGET_HEIGHT = 100;
+      console.log();
       simple.dragdrop({
         draggable: '.draggable',
         droppable: '.test',
@@ -154,19 +155,19 @@
       expect($(document).find('.vertical_line').css('display')).toBe('none');
       for (i = j = ref = -ALIGN_OFFSET, ref1 = ALIGN_OFFSET; ref <= ref1 ? j <= ref1 : j >= ref1; i = ref <= ref1 ? ++j : --j) {
         mousemove(0, i);
-        expect($(document).find('.vertical_line').css('top')).toBe('62px');
+        expect($(document).find('.vertical_line').css('display')).toBe('block');
       }
       mousemove(0, ALIGN_OFFSET + 1);
       expect($(document).find('.vertical_line').css('display')).toBe('none');
       for (i = k = ref2 = TARGET_HEIGHT / 2 - ALIGN_OFFSET, ref3 = TARGET_HEIGHT / 2 + ALIGN_OFFSET; ref2 <= ref3 ? k <= ref3 : k >= ref3; i = ref2 <= ref3 ? ++k : --k) {
         mousemove(0, i);
-        expect($(document).find('.vertical_line').css('top')).toBe('112px');
+        expect($(document).find('.vertical_line').css('display')).toBe('block');
       }
       mousemove(0, TARGET_HEIGHT / 2 + ALIGN_OFFSET + 1);
       expect($(document).find('.vertical_line').css('display')).toBe('none');
       for (i = l = ref4 = TARGET_HEIGHT - ALIGN_OFFSET, ref5 = TARGET_HEIGHT + ALIGN_OFFSET; ref4 <= ref5 ? l <= ref5 : l >= ref5; i = ref4 <= ref5 ? ++l : --l) {
         mousemove(0, i);
-        expect($(document).find('.vertical_line').css('top')).toBe('162px');
+        expect($(document).find('.vertical_line').css('display')).toBe('block');
       }
       mousemove(0, TARGET_HEIGHT + ALIGN_OFFSET + 1);
       return expect($(document).find('.vertical_line').css('display')).toBe('none');

@@ -15,12 +15,12 @@ describe 'Simple snap', ->
   $dragging.css
     height: 30
     width: 30
-    border: '1px solid black'
+    background: 'red'
 
   $target.css
     height: 100
     width: 100
-    border: '1px solid black'
+    background: 'blue'
 
   dragOffset = $dragging.offset()
   targetOffset = $target.offset()
@@ -120,21 +120,21 @@ describe 'Simple snap', ->
     #Left Line
     for i in [-ALIGN_OFFSET .. ALIGN_OFFSET]
       mousemove(i, 0)
-      expect($(document).find('.horizontal_line').css('left')).toBe('38px')
+      expect($(document).find('.horizontal_line').css('display')).toBe('block')
     mousemove(ALIGN_OFFSET + 1, 0)
     expect($(document).find('.horizontal_line').css('display')).toBe('none')
 
     #Mid Line
     for i in [TARGET_WIDTH/2 - ALIGN_OFFSET .. TARGET_WIDTH/2 + ALIGN_OFFSET]
       mousemove(i, 0)
-      expect($(document).find('.horizontal_line').css('left')).toBe('88px')
+      expect($(document).find('.horizontal_line').css('display')).toBe('block')
     mousemove(TARGET_WIDTH/2 + ALIGN_OFFSET + 1, 0)
     expect($(document).find('.horizontal_line').css('display')).toBe('none')
 
     #Right Line
     for i in [TARGET_WIDTH - ALIGN_OFFSET .. TARGET_WIDTH + ALIGN_OFFSET]
       mousemove(i, 0)
-      expect($(document).find('.horizontal_line').css('left')).toBe('138px')
+      expect($(document).find('.horizontal_line').css('display')).toBe('block')
     mousemove(TARGET_WIDTH + ALIGN_OFFSET + 1, 0)
     expect($(document).find('.horizontal_line').css('display')).toBe('none')
 
@@ -142,6 +142,7 @@ describe 'Simple snap', ->
   it 'should show vertical lines (align in y)', ->
     ALIGN_OFFSET = 5
     TARGET_HEIGHT = 100
+    console.log()
     simple.dragdrop
       draggable: '.draggable'
       droppable: '.test'
@@ -154,21 +155,21 @@ describe 'Simple snap', ->
     #Top Line
     for i in [-ALIGN_OFFSET .. ALIGN_OFFSET]
       mousemove(0, i)
-      expect($(document).find('.vertical_line').css('top')).toBe('62px')
+      expect($(document).find('.vertical_line').css('display')).toBe('block')
     mousemove(0, ALIGN_OFFSET + 1)
     expect($(document).find('.vertical_line').css('display')).toBe('none')
 
     #Mid Line
     for i in [TARGET_HEIGHT/2 - ALIGN_OFFSET .. TARGET_HEIGHT/2 + ALIGN_OFFSET]
       mousemove(0, i)
-      expect($(document).find('.vertical_line').css('top')).toBe('112px')
+      expect($(document).find('.vertical_line').css('display')).toBe('block')
     mousemove(0, TARGET_HEIGHT/2 + ALIGN_OFFSET + 1)
     expect($(document).find('.vertical_line').css('display')).toBe('none')
 
     #Bottom Line
     for i in [TARGET_HEIGHT - ALIGN_OFFSET .. TARGET_HEIGHT + ALIGN_OFFSET]
       mousemove(0, i)
-      expect($(document).find('.vertical_line').css('top')).toBe('162px')
+      expect($(document).find('.vertical_line').css('display')).toBe('block')
     mousemove(0, TARGET_HEIGHT + ALIGN_OFFSET + 1)
     expect($(document).find('.vertical_line').css('display')).toBe('none')
 
