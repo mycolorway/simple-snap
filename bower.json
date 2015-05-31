@@ -27,6 +27,9 @@
     "jquery": "2.x",
     "simple-module": "2.x",
     "simple-dragdrop" : "2.x"
+  },
+  "devDependencies": {
+    "jasmine-jquery": "2.x"
   }
 }
 
