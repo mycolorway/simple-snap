@@ -46,7 +46,7 @@ class Snap extends SimpleModule
         @horizental_line.hide()
         @vertical_line.hide()
 
-      @dragdrop.on 'dragdestroy', ()=>
+      @dragdrop.on 'destroy', ()=>
         @horizental_line.remove()
         @vertical_line.remove()
 

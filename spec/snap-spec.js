@@ -143,7 +143,6 @@
       var ALIGN_OFFSET, TARGET_HEIGHT, i, j, k, l, ref, ref1, ref2, ref3, ref4, ref5;
       ALIGN_OFFSET = 5;
       TARGET_HEIGHT = 100;
-      console.log();
       simple.dragdrop({
         draggable: '.draggable',
         droppable: '.test',

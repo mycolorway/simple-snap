@@ -142,7 +142,6 @@ describe 'Simple snap', ->
   it 'should show vertical lines (align in y)', ->
     ALIGN_OFFSET = 5
     TARGET_HEIGHT = 100
-    console.log()
     simple.dragdrop
       draggable: '.draggable'
       droppable: '.test'
